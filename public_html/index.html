@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test web storage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script src="storage.js"></script>
+        <script>
+            store.init('local');
+            store.set('a', 'sdsdsdd');
+            store.set('b', 123);
+            store.set('c', true);
+            store.set('d', [1, 2, 3, 4]);
+            store.set('e', {name: 'anna', age: 10, love: ['qq', 'ali']});
+
+            console.log('a value:', store.get('a'));
+            console.log('a type:', typeof store.get('a'));
+            console.log('b value:', store.get('b'));
+            console.log('b type:', typeof store.get('b'));
+            console.log('c value:', store.get('c'));
+            console.log('c type:', typeof store.get('c'));
+            console.log('d value:', store.get('d'));
+            console.log('d type:', typeof store.get('d'));
+            console.log('e value:', store.get('e'));
+            console.log('e type:', typeof store.get('e'));
+            store.remove('e');
+            store.clear();
+        </script>
+    </body>
+</html>
