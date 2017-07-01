@@ -1,12 +1,14 @@
 var store = function () {
     this.storage = 'session';
+    var temp = null;
 
-    var init = function (param) {
+    var switchType = function (param) {
         switch (param) {
             case 'local':
                 this.storage = 'local';
                 break;
             case 'session':
+                this.storage = 'session';
                 break;
             default:
                 throw new Error('not suport this type.The param must be in "local" or "session"');
@@ -37,6 +39,12 @@ var store = function () {
     };
 
     var remove = function (key) {
+        if (get(key) === temp) {
+            return {
+                result: false,
+                message: key + ' not exist'
+            };
+        }
         switch (this.storage) {
             case 'local':
                 localStorage.removeItem(key);
@@ -45,6 +53,10 @@ var store = function () {
                 sessionStorage.removeItem(key);
                 break;
         }
+        return {
+            result: true,
+            message: 'remove' + key + 'success'
+        };
     };
 
     var clear = function () {
@@ -79,7 +91,6 @@ var store = function () {
                 res = JSON.stringify(val);
                 break;
             case 'object':
-                var temp = null;
                 if (val === temp) {
                     throw new TypeError('not support null.');
                 }
@@ -94,7 +105,7 @@ var store = function () {
     };
 
     return {
-        init: init,
+        switchType: switchType,
         set: set,
         get: get,
         remove: remove,

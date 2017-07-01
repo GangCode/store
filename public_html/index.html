@@ -8,7 +8,11 @@
     <body>
         <script src="storage.js"></script>
         <script>
-            store.init('local');
+            store.switchType('session');
+            store.set('www', '44444');
+            store.clear();
+
+            store.switchType('local');
             store.set('a', 'sdsdsdd');
             store.set('b', 123);
             store.set('c', true);
@@ -25,7 +29,8 @@
             console.log('d type:', typeof store.get('d'));
             console.log('e value:', store.get('e'));
             console.log('e type:', typeof store.get('e'));
-            store.remove('e');
+            var res = store.remove('鹅鹅鹅');
+            console.log(res);
             store.clear();
         </script>
     </body>
