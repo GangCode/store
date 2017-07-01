@@ -2,7 +2,7 @@
 
 用法：
 ------
-`<script src="storage.js"></script>`
+<code style="color:red;">`<script src="storage.js"></script>`</code>
 
 API:
 -----
